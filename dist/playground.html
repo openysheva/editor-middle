@@ -31,6 +31,8 @@
     const checkJuniorLevel = ({ userName, task1, task2, task3 }) => {
         const isFirstCorrect = task1 ? [task1([25, 25, 50]), task1([25, 100]), task1([25, 25, 50, 50, 100])].join(',') === result1 : false;
 
+        console.log({ isFirstCorrect });
+
         const isSecondConrrect = task2 ?
             [
                 task2(['0','1']),
@@ -40,12 +42,17 @@
             ].join('') === result2 : false;
 
 
+        console.log({ isSecondConrrect });
+
+
         const isThirdCorrect = task3 ? [
             task3('foo'),
             task3('foobar001'),
             task3('foobar99'),
             task3('foobar099'),
         ].join('') === result3 : false;
+
+        console.log({ isThirdCorrect });
 
         return isFirstCorrect && isSecondConrrect && isThirdCorrect && userName;
     };
