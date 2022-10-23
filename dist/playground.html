@@ -24,56 +24,233 @@
     window['react-router-dom'] = window.ReactRouterDOM;
     window['styled-components'] = window.styled;
 
-    const result1 = "YES,NO,NO";
-    const result2 = '24531';
-    const result3 = 'foo1foobar002foobar100foobar100';
+    const result1 = "23:59,11:40,09:10";
+    const result2 = "[[[1],[1,1],[1,1,1]],[[1],[1,1],[1,1,1],[1,1,1,1]],[[1],[1,1],[1,1,1],[1,1,1,1],[1,1,1,1,1]]]";
+    const result3 = "true,false,true";
+    const result4 = "42 -9,3 1,9 -5";
+    const result5 = "yes, ascending,yes, descending,no";
+    const result6 = "volcano,semynak,aaa";
+    const result7 = "e,P";
+    const result10 = "531,7210,441";
+    const result11 = "a,t,e";
+    const result12 = "0,4,1";
+    const result13 = "foobar1000,foo1,foobar0124";
+    const result14 = "3,7";
+    const result15 = "Q1,Q3,Q2";
 
-    const checkJuniorLevel = ({ userName, task1, task2, task3 }) => {
-        const isFirstCorrect = task1 ? [task1([25, 25, 50]), task1([25, 100]), task1([25, 25, 50, 50, 100])].join(',') === result1 : false;
-
-        console.log({ isFirstCorrect });
+    const checkAnswers = ({
+        task1,
+        task2,
+        task3,
+        task4,
+        task5,
+        task6,
+        task7,
+        task8,
+        task9,
+        task10,
+        task11,
+        task12,
+        task13,
+        task14,
+        task15
+    }) => {
+        const correctAnswers = [];
+        const isFirstCorrect = task1 ? (
+            [task1(["14:51"]),
+            task1(["23:00","04:22","18:05","06:24"]),
+            task1(["21:14", "15:34", "14:51", "06:25", "15:30"])] || []
+        ).join(',') === result1 : false;
+        if (isFirstCorrect) {
+            correctAnswers.push(1);
+        }
 
         const isSecondConrrect = task2 ?
-            [
-                task2(['0','1']),
-                task2(['01','02','03']),
-                task2(['012','0123','01234']),
-                task2(['0123456789','0123987654','0123987456','2365498756','2365498765'])
-            ].join('') === result2 : false;
+            JSON.stringify([
+                task2(3),
+                task2(4),
+                task2(5)
+            ]) === result2 : false;
 
+        if (isSecondConrrect) {
+            correctAnswers.push(2);
+        }
 
-        console.log({ isSecondConrrect });
+        const isThirdCorrect = task3
+            ? [
+                task3('rkqodlw', 'world'), 
+                task3('katas', 'steak'),
+                task3('scriptingjava', 'javascript')
+            ].join(',') === result3
+            : false;
 
+        if (isThirdCorrect) {
+            correctAnswers.push(3);
+        }
 
-        const isThirdCorrect = task3 ? [
-            task3('foo'),
-            task3('foobar001'),
-            task3('foobar99'),
-            task3('foobar099'),
-        ].join('') === result3 : false;
+        const isFourthCorrect = task4
+            ? [
+                task4('8 3 -5 42 -1 0 0 -9 4 7 4 -4'),
+                task4('1 2 3'),
+                task4('1 9 3 4 -5')
+            ].join(',') === result4
+            : false;
 
-        console.log({ isThirdCorrect });
+        if (isFourthCorrect) {
+            correctAnswers.push(4);
+        }
 
-        return isFirstCorrect && isSecondConrrect && isThirdCorrect && userName;
+        const isFifthCorrect = task5
+            ? [
+                task5([1, 2]), 
+                task5([15, 7, 3, -8]),
+                task5([4, 2, 30])
+            ].join(',') === result5
+            : false;
+
+        if (isFifthCorrect) {
+            correctAnswers.push(5);
+        }
+
+        const isSixCorrect = task6
+            ? [
+                task6("what time are we climbing up the volcano"), 
+                task6("take me to semynak"),
+                task6("aaa b")
+            ].join(',') === result6
+            : false;
+
+        if (isSixCorrect) {
+            correctAnswers.push(6);
+        }
+
+        const isSevenCorrect = task7
+            ? [
+                task7(['a','b','c','d','f']), 
+                task7(['O','Q','R','S']),
+            ].join(',') === result7
+            : false;
+
+        if (isSevenCorrect) {
+            correctAnswers.push(7);
+        }
+
+        const isEightCorrect = task8
+            ? task8("aba")?.a === 2 && task8("aba")?.b === 1 
+              && task8("ferret")?.r === 2 && task8("ferret")?.e === 2 && task8("ferret")?.f === 1 && task8("ferret")?.t === 1
+              && task8("hellllp")?.l === 4 && task8("hellllp")?.h === 1 && task8("hellllp")?.e === 1 && task8("hellllp")?.p === 1
+            : false;
+
+        if (isEightCorrect) {
+            correctAnswers.push(8);
+        }
+
+        const isNineCorrect = task9
+            ? task9("101?")?.includes("1010") && task9("101?")?.includes("1011")
+              && task9("1?1?")?.includes("1111") && task9("1?1?")?.includes("1010")
+              && task9("1?1?")?.includes("1110") && task9("1?1?")?.includes("1011")
+            : false;
+
+        if (isNineCorrect) {
+            correctAnswers.push(9);
+        }
+
+        const isTenCorrect = task10
+            ? [
+                task10(513), 
+                task10(2017),
+                task10(414)
+            ].join(',') === result10
+            : false;
+
+        if (isTenCorrect) {
+            correctAnswers.push(10);
+        }
+
+        const isElevenCorrect = task11
+            ? [
+                task11('a'), 
+                task11('stress'),
+                task11('moonmen')
+            ].join(',') === result11
+            : false;
+
+        if (isElevenCorrect) {
+            correctAnswers.push(11);
+        }
+
+        const isTwelveCorrect = task12
+            ? [
+                task12([]), 
+                task12([':D',':~)',';~D',':)']),
+                task12([';]', ':[', ';*', ':$', ';-D'])
+            ].join(',') === result12
+            : false;
+
+        if (isTwelveCorrect) {
+            correctAnswers.push(12);
+        }
+
+        const isThirteenCorrect = task13
+            ? [
+                task13("foobar999"), 
+                task13("foo"),
+                task13("foobar0123"),
+            ].join(',') === result13
+            : false;
+
+        if (isThirteenCorrect) {
+            correctAnswers.push(13);
+        }
+
+        const isFourteenCorrect = task14
+            ? [
+                task14([
+                    [1, 2, 4, "s", "hello"],
+                    ["f", "discount"],
+                    ["tier", 3, "my", 10],
+                ]),
+                task14([
+                    [1, 2, 4, "s", "hello", 553, 65, 2],
+                    ["f", "discount", 134, 77, 22, "yep"],
+                    ["tier", 3, "my", 10, "HIS"],
+                ]),
+            ].join(',') === result14
+            : false;
+
+        if (isFourteenCorrect) {
+            correctAnswers.push(14);
+        }
+
+        const isFifeteenCorrect = task15
+            ? [
+                task15(3), 
+                task15(9),
+                task15(4)
+            ].join(',') === result15
+            : false;
+
+        if (isFifeteenCorrect) {
+            correctAnswers.push(15);
+        }
+
+        console.log(correctAnswers)
+
+        return correctAnswers;
     };
 
-    const getQRCode = async (userName) => {
-        fetch(`https://api.qrserver.com/v1/create-qr-code/?data=FC_Raiff_Middle_JS__508${userName.charCodeAt(0)}rua91!&size=100x100`)
-            .then(async (result) => {
-                const blobResult = await result.blob();
-                const newBlob = new Blob([blobResult]);
+    const getSuccessAlert = (newSuccessContainer, correctAnswer) => {
+        const successAlert = document.createElement('p');
+        successAlert.innerHTML = `Вы верно решили задачу № ${correctAnswer} 🤌🏻`;
+        successAlert.style.borderRadius = '8px';
+        successAlert.style.padding = '16px 24px';
+        successAlert.style.color = '#008e7d';
+        successAlert.style.backgroundColor = '#e8f7f4';
+        successAlert.style.width = '280px';
+        successAlert.style.textAlign = 'center';
+        successAlert.style.fontFamily = 'sans-serif';
 
-                var uri = URL.createObjectURL(newBlob);
-                var img = new Image();
-
-                img.width = 100;
-                img.height = 100;
-                img.style.position = 'absolute';
-                img.style.top = 'calc(50% + 50px)';
-                img.style.left = 'calc(50% - 50px)';
-                img.src = uri;
-                document.body.appendChild(img);
-            });
+        newSuccessContainer.appendChild(successAlert);
     }
 
     const listener = (e) => {
@@ -83,12 +260,17 @@
                     .then(response => response.text())
                     .then(code => eval(code))
                     .then(() => {
-                        const result = checkJuniorLevel(window['exercise']);
+                        const result = checkAnswers(window['exercise']);
+                        const rightContainer = document.getElementById('right-container');
+                        const successContainer = document.getElementById('success-alert-container');
+                        successContainer?.remove();
+                        const newSuccessContainer = document.createElement('div');
+                        newSuccessContainer.id = 'success-alert-container';
+                        rightContainer.appendChild(newSuccessContainer);
 
-                        const userName = window['exercise'] && window['exercise'].userName;
 
-                        if (result) {
-                            getQRCode(userName);
+                        for (correctAnswer in result) {
+                            getSuccessAlert(newSuccessContainer, result[correctAnswer]);
                         }
                     })
                     .catch(console.log);
