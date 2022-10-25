@@ -207,7 +207,7 @@ const countSmileys = smileysArray => {
 
     Пример:
     incrementString("foobar23"); // вернет "foobar24"
-    incrementString("foo"); // вернет "foobar1"
+    incrementString("foo"); // вернет "foo1"
 */
 
 const incrementString = stringForIncrement => {
